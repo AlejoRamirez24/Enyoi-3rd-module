@@ -93,3 +93,10 @@ node index.js
 3. Escribe el número de palabras en un nuevo archivo llamado resultado.txt.
 
 Tips: Utiliza el módulo nativo de node `fs` para leer y escribir archivos.
+
+
+## Tareas
+
+1. Repasar Asincronismos en js (callbacks, promises, async await)
+2. Leer acerca de Git y github
+3. Preferiblemente leer acerca del event loop en el lado del navegador y eventloop en el lado de servidor node.js
