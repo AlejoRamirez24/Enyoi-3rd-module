@@ -3,8 +3,8 @@ const path = './datos.txt';
 const resultadoPath = './resultado.txt';
 
 function contarPalabras(texto) {
-    const palabras = texto.trim().split(/\s+/); 
-    return palabras.length;
+  const palabras = texto.trim().split(/\s+/); 
+  return palabras.length;
 }
 
 // Leer el archivo datos.txt

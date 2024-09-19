@@ -29,6 +29,7 @@
   - Ecosistema rico
 
 ### Ejercicio:
+
 - Instalar React:
   ```bash
   npm install react react-dom
@@ -54,6 +55,24 @@
   npx webpack
   ```
 - Abrir el archivo index.html en un navegador.
+
+- Utilizando vite
+  En el siguiente pedazo de codigo encontraras los comandos para instalar de forma global y ejecutar un proyecto con vite 
+  ```bash
+  npm install -g create-vite
+  create-vite my-app
+  cd my-app
+  npm install
+  npm run dev
+  ```
+
+  Si prefieres no instalas vite de forma global puedes ejecutar los siguientes comandos
+  ```bash
+  npm create vite@latest my-app
+  cd my-app
+  npm install
+  npm run dev
+  ```
 
 ## 3. ¿Qué es JSX?
 
@@ -117,6 +136,7 @@
 - [Documentación de npm](https://docs.npmjs.com/)
 - [Documentación de Babel](https://babeljs.io/docs/en/)
 - [Documentación de Webpack](https://webpack.js.org/concepts/)
+- [Documentacion de Vite](https://es.vitejs.dev/guide/)
 
 
 ### Ejercicio propuesto:
