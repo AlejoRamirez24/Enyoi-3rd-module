@@ -24,12 +24,6 @@
   - **Framework:** Define la estructura y el flujo de trabajo de una aplicación.
   - **Librería:** Proporciona funciones y utilidades específicas para tareas comunes.
 
-### Práctica 
-
-- **Discusión en grupo**: 
-  - ¿Qué frameworks conocen? 
-  - ¿Han utilizado alguno antes?
-  - ¿Cuáles son las ventajas que han notado al usarlos?
 
 ---
 
@@ -159,3 +153,4 @@
 ## Recursos adicionales
 
 - [Express.js - Documentación oficial](https://expressjs.com/)
+- [Metodos HTTP - MDN Web Docs](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)
