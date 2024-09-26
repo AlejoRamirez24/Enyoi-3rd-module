@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba CORS desde otro puerto</title>
+</head>
+<body>
+    <h1>Prueba de CORS desde otro puerto</h1>
+
+    <button id="makeRequest">Hacer petición a localhost:3000</button>
+
+    <script>
+        document.getElementById('makeRequest').addEventListener('click', async function() {
+            try {
+                const response = await fetch('http://localhost:3000/');
+                if ( !response.ok ) {
+                    throw new Error('Error en la respuesta: ' + response.statusText);
+                }
+                const data = await response.json();
+                console.log('Respuesta de la API:', data);
+            } catch (error) {
+                console.error('Error al hacer la petición:', error);
+            }
+        });
+    </script>
+</body>
+</html>
