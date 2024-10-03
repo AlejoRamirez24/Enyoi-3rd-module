@@ -4,7 +4,7 @@
 
 ### Paso 1: Instalar Mongoose
 ```bash
-npm install mongoose~/
+npm install mongoose
 ```
 
 ### Paso 2: Configurar la conexión a MongoDB
