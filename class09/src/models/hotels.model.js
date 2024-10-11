@@ -21,6 +21,8 @@ export class Hotels extends Model {
   )
   }
 
-  static associate(models){}
+  static associate(models){
+    this.hasMany(models.Rooms, {foreignKey: 'hotelId', as: 'rooms'})
+  }
 }
 
