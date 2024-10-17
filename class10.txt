@@ -1,0 +1,94 @@
+const jwt = require('jsonwebtoken');
+
+// Generar un token con tiempo de expiración
+const token = jwt.sign({ id: 1, username: 'testUser' }, 'tu_secreto', { expiresIn: '1h' });
+
+console.log(token);
+--------------------------------------------
+
+require('dotenv').config();
+
+process.env.JWT_SECRET,
+-----------------------------
+const { expressjwt } = require('express-jwt');
+
+// Proteger solo la ruta '/protected'
+app.get('/protected', expressjwt({ secret: 'tu_secreto', algorithms: ['HS256'] }), (req, res) => {
+  res.send('Esta es una ruta protegida');
+});
+
+// Otras rutas sin protección
+app.get('/public', (req, res) => {
+  res.send('Esta es una ruta pública');
+});
+------------------------------
+const { expressjwt } = require('express-jwt');
+
+// Middleware para proteger rutas y verificar el token
+const jwtMiddleware = expressjwt({ secret: process.env.JWT_SECRET, algorithms: ['HS256'] });
+
+// Ruta protegida con verificación de permisos (solo para usuarios con rol 'admin')
+app.get('/admin', jwtMiddleware, (req, res) => {
+  // Verificar si el token tiene el rol de 'admin'
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({ error: 'Forbidden: You don\'t have access to this resource' });
+  }
+
+  // Si el usuario tiene el rol adecuado, puede acceder
+  res.send('Bienvenido al panel de administración');
+});
+
+// Middleware para manejar errores de autenticación y autorización
+app.use((err, req, res, next) => {
+  if (err.name === 'UnauthorizedError') {
+    // Error de autenticación (token inválido o no proporcionado)
+    res.status(401).json({ error: 'Unauthorized: No token provided or token is invalid' });
+  } else {
+    next(err); // Continuar con otros errores si no es un UnauthorizedError
+  }
+});
+--------------------------------
+// Guard para verificar si el usuario tiene un rol específico
+const roleGuard = (requiredRoles) => {
+  return (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({ error: 'Unauthorized: No token provided or token is invalid' });
+    }
+
+    // Verificar si el rol del usuario está en la lista de roles permitidos
+    if (!requiredRoles.includes(req.user.role)) {
+      return res.status(403).json({ error: 'Forbidden: You don\'t have access to this resource' });
+    }
+
+    next();
+  };
+};
+
+// Exportar el middleware con ES6 modules
+export default roleGuard;
+
+-----------------------------------------------------------------
+```javascript const jwt = require('jsonwebtoken');
+
+// Middleware para verificar el token JWT 
+function verifyJWT(req, res, next) { const token = req.headers['authorization'];
+
+if (!token) { return res.status(403).send({ auth: false, message: 'No token provided.' }); }
+
+jwt.verify(token, 'your-secret-key', (err, decoded) => { if (err) { return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' }); }
+// Si el token es válido, guardamos la información del usuario decodificado en req.user
+req.user = decoded;
+next();
+
+}); }
+
+module.exports = verifyJWT; ~/```
+
+
+~/```javascript // Middleware para verificar el rol del usuario 
+function roleGuard(roles) { return (req, res, next) => { // Verifica si el usuario tiene un rol permitido 
+if (!req.user || !roles.includes(req.user.role)) 
+  { return res.status(403).send({ message: 'Acceso denegado. No tienes el rol adecuado.' });
+   } next(); }; }
+
+module.exports = roleGuard; ~/```

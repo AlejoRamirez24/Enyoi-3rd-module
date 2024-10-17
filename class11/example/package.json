@@ -1,0 +1,18 @@
+{
+  "name": "class11",
+  "version": "1.0.0",
+  "description": "En Express, puedes aplicar varios middlewares a un mismo endpoint pasando los middlewares como una lista de funciones antes del controlador del endpoint. Aquí tienes un ejemplo:",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "multer": "^1.4.5-lts.1"
+  },
+  "type": "module"
+}
